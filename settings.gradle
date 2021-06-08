@@ -1,0 +1,5 @@
+include ':module_home'
+include ':libbase'
+include ':libcommon'
+include ':app'
+rootProject.name = "WanAndroidMVVM"

@@ -1,0 +1,21 @@
+if (singleModule.toBoolean()){
+    apply plugin: 'com.android.application'
+}else {
+    apply plugin: 'com.android.library'
+}
+
+apply from: '../dependencies.gradle'
+
+android {
+
+    defaultConfig {
+        if (singleModule.toBoolean()){
+            applicationId "com.lzk.module_home"
+        }
+    }
+
+}
+
+dependencies {
+    implementation project(path: ':libbase')
+}
