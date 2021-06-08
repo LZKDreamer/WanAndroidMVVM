@@ -1,7 +1,7 @@
 package com.lzk.libcommon.app
 
 import android.app.Application
-import com.lzk.libcommon.network.RxHttpManager
+import com.lzk.libcommon.network.net.RxHttpManager
 
 /**
  * @Author: LiaoZhongKai

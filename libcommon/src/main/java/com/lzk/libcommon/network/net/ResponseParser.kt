@@ -1,5 +1,8 @@
-package com.lzk.libcommon.network
+package com.lzk.libcommon.network.net
 
+import com.lzk.libcommon.network.ApiException
+import com.lzk.libcommon.network.BaseResp
+import com.lzk.libcommon.network.DataNullException
 import okhttp3.Response
 import okio.IOException
 import rxhttp.wrapper.annotation.Parser

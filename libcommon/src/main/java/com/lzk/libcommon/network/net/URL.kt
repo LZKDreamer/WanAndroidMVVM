@@ -1,4 +1,4 @@
-package com.lzk.libcommon.network
+package com.lzk.libcommon.network.net
 
 import rxhttp.wrapper.annotation.DefaultDomain
 

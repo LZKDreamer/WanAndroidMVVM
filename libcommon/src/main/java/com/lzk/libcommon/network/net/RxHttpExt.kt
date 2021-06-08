@@ -1,5 +1,9 @@
-package com.lzk.libcommon.network
+package com.lzk.libcommon.network.net
 
+import com.lzk.libcommon.network.ApiException
+import com.lzk.libcommon.network.DataNullException
+import com.lzk.libcommon.network.DataResult
+import com.lzk.libcommon.network.ExceptionHandler
 import rxhttp.IAwait
 
 /**
@@ -8,7 +12,7 @@ import rxhttp.IAwait
  * @Description:
  */
 
-suspend fun <T: Any> IAwait<T>.request(): DataResult<T>{
+suspend fun <T: Any> IAwait<T>.request(): DataResult<T> {
     var result: DataResult<T> = DataResult.Empty
     kotlin.runCatching {
         this.await()
@@ -17,7 +21,7 @@ suspend fun <T: Any> IAwait<T>.request(): DataResult<T>{
     }.onFailure {
         result = when(it){
             is ApiException -> {
-                DataResult.Error(it.code,it.msg)
+                DataResult.Error(it.code, it.msg)
             }
             is DataNullException -> {
                 DataResult.Empty

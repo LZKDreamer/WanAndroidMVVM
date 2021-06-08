@@ -1,14 +1,13 @@
-package com.lzk.libcommon.network
+package com.lzk.libcommon.network.net
 
 import android.util.Log
 import com.lzk.libcommon.BuildConfig
+import com.lzk.libcommon.network.LocalCookieJar
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import rxhttp.RxHttpPlugins
-import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.ssl.HttpsUtils
 import java.util.concurrent.TimeUnit
-import javax.net.ssl.HostnameVerifier
 
 /**
  * @Author: LiaoZhongKai

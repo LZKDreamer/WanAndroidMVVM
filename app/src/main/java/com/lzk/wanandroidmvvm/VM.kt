@@ -3,6 +3,7 @@ package com.lzk.wanandroidmvvm
 import androidx.lifecycle.MutableLiveData
 import com.lzk.libcommon.base.BaseViewModel
 import com.lzk.libcommon.network.*
+import com.lzk.libcommon.network.net.request
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toResponse
 
