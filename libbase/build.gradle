@@ -7,5 +7,5 @@ apply from: '../dependencies.gradle'
 android {}
 
 dependencies{
-    implementation project(path: ':libcommon')
+    api project(path: ':libcommon')
 }

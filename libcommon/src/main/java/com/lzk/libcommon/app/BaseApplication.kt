@@ -1,6 +1,7 @@
 package com.lzk.libcommon.app
 
 import android.app.Application
+import com.lzk.libcommon.network.RxHttpManager
 
 /**
  * @Author: LiaoZhongKai
@@ -9,5 +10,9 @@ import android.app.Application
  */
 class BaseApplication : Application() {
 
+    override fun onCreate() {
+        super.onCreate()
+        RxHttpManager.init()
+    }
 
 }

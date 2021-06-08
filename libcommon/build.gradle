@@ -6,4 +6,11 @@ apply from: '../dependencies.gradle'
 
 android {}
 
-dependencies{}
+dependencies{
+    //region RxHttp
+    api 'com.github.liujingxing.rxhttp:rxhttp:2.6.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    kapt 'com.github.liujingxing.rxhttp:rxhttp-compiler:2.6.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    //endregion
+}

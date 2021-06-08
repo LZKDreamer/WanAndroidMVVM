@@ -11,16 +11,12 @@ import kotlinx.coroutines.launch
  * @Date: 2021/6/7 16:59
  * @Description:
  */
-class BaseViewModel : ViewModel() {
+open class BaseViewModel : ViewModel() {
 
     private val jobs = mutableListOf<Job>()
 
     protected fun launch(block: suspend CoroutineScope.() -> Unit) = viewModelScope.launch {
-        kotlin.runCatching {
-            block.invoke(this)
-        }.onFailure {
-
-        }
+        block.invoke(this)
     }.addTo(jobs)
 
     override fun onCleared() {

@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
 }
 
 apply from: '../dependencies.gradle'
@@ -13,7 +12,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("../key.jks")//keystore文件放在app目录下
+            storeFile file("../key.jks")
             storePassword "wanandroidmvvm"
             keyAlias "wanandroidmvvm"
             keyPassword "wanandroidmvvm"
@@ -44,4 +43,7 @@ android {
 
 dependencies {
     implementation project(path: ':libbase')
+    if (!singleModule.toBoolean()){
+        implementation project(path: ':module_home')
+    }
 }

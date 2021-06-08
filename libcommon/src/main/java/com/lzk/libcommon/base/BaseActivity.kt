@@ -2,6 +2,7 @@ package com.lzk.libcommon.base
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -24,6 +25,7 @@ abstract class BaseActivity<T: ViewDataBinding> : AppCompatActivity(){
         mBinding.lifecycleOwner = this
         getExtras(intent)
         initView(savedInstanceState)
+        observe()
         initData()
         initEvent()
     }
@@ -38,13 +40,23 @@ abstract class BaseActivity<T: ViewDataBinding> : AppCompatActivity(){
     @LayoutRes
     abstract fun getLayoutRes(): Int
 
-    fun getExtras(intent: Intent?){}
+    open fun getExtras(intent: Intent?){}
 
     abstract fun initView(savedInstanceState: Bundle?)
 
     abstract fun initData()
 
     abstract fun initEvent()
+
+    open fun observe(){
+
+    }
+
+    protected fun showToast(text: String?){
+        text?.let {
+            Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
+        }
+    }
 
     protected inline fun <T : Any?> LiveData<T>.observeKt(crossinline block: (T?) -> Unit) {
         this.observe(this@BaseActivity, Observer {
