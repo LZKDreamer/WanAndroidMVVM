@@ -1,9 +1,12 @@
 package com.lzk.wanandroidmvvm
 
+import android.os.Looper
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.lzk.libcommon.base.BaseViewModel
 import com.lzk.libcommon.network.*
-import com.lzk.libcommon.network.net.request
+import com.lzk.libcommon.network.net.requestAsync
+import com.lzk.libcommon.network.net.requestAwait
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toResponse
 
@@ -20,7 +23,7 @@ class VM : BaseViewModel() {
         RxHttp.get("https://www.wanandroid.com/article/top/json")
             //            .toClass<BaseResp<List<ArticleData>>>()
             .toResponse<List<ArticleData>>()
-            .request()
+            .requestAwait()
             .onSuccess {
                 liveSuccess.postValue("成功啦!")
             }
@@ -32,6 +35,23 @@ class VM : BaseViewModel() {
             }
             .onEmpty {
                 liveError.postValue("onEmpty")
+            }
+    }
+
+    fun getAsync() = launch {
+        RxHttp.get("https://www.wanandroid.com/article/top/json")
+            .toResponse<List<ArticleData>>()
+            .requestAsync(this)
+            .onSuccess {
+                Log.d("TAG","async 1")
+                liveSuccess.postValue("async 1成功啦! ${Looper.getMainLooper() == Looper.myLooper()}")
+            }
+        RxHttp.get("https://www.wanandroid.com/article/top/json")
+            .toResponse<List<ArticleData>>()
+            .requestAsync(this)
+            .onSuccess {
+                Log.d("TAG","async 2")
+                liveSuccess.postValue("async 2成功啦!")
             }
     }
 }
